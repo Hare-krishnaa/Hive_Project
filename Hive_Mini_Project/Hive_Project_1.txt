@@ -19,3 +19,9 @@ Ans: create table agent_performance(
             Total_feedback int)
      row fromated delimited
      field terminated by ",";
+
+Q-2. Dump the data inside the hdfs in the given schema location.?
+Ans: 
+
+Q-3. List of all agents' names.?
+Ans:
