@@ -7,7 +7,7 @@ Download Dataset 2 - https://drive.google.com/file/d/1-JIPCZ34dyN6k9CqJa-Y8yxIGq
 
 All the queries related to these datasets are down below with answers::
 
-Q-1. Create a schema based on the given dataset?
+"""Q-1. Create a schema based on the given dataset?
 Ans: create table agent_performance(
             SL_no. int,
             Date date,
@@ -19,13 +19,9 @@ Ans: create table agent_performance(
             Total_feedback int)
      row fromated delimited
      field terminated by ",";
-
+"""
 Q-2. Dump the data inside the hdfs in the given schema location.?
 Ans: 
 
 Q-3. List of all agents' names.?
 Ans:
-
-"""
-aman
-"""
