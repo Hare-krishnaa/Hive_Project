@@ -8,20 +8,74 @@ Download Dataset 2 - https://drive.google.com/file/d/1-JIPCZ34dyN6k9CqJa-Y8yxIGq
 All the queries related to these datasets are down below with answers::
 
 Q-1. Create a schema based on the given dataset?
-Ans: create table agent_performance(
-            SL_no. int,
-            Date date,
+Ans:  create table agent_performance(
+            SL_no int,
+            Date_ date,
             Agent_Name string,
             Total_chats int,
-            Average_response_time time,
-            Average_resolution_time,
+            Average_response_time timestamp,
+            Average_resolution_time timestamp,
             Average_rating float,
             Total_feedback int)
-     row fromated delimited
-     field terminated by ",";
+     row format delimited
+     fields terminated by ','
+     TBLPROPERTIES ("skip.header.line.count"="1");
      
 Q-2. Dump the data inside the hdfs in the given schema location.?
-Ans: 
+Ans: load data local inpath 'file:///config/workspace/AgentPerformance.csv' overwrite into table agent_performance;
 
 Q-3. List of all agents' names.?
+Ans: select distinct Agent_Name from agent_performance;
+
+Q-4. Find out agent average rating.?
+Ans: select avg(Average_rating) from agent_performance group by Agent_Name;
+
+Q-5. Total working days for each agents?
+Ans: select Agent_Name, count(Agent_name) from agent_performance where Total_chats > 0 group by Agent_Name;
+
+Q-6. Total query that each agent have taken?
+Ans. select Agent_Name, sum(Total_chats) from agent_performance group by Agent_Name;
+
+Q-7. Total Feedback that each agent have received?
+Ans. select Agent_Name, sum(Total_feedback) from agent_performance group by Agent_Name;
+
+Q-8. Agent name who have average rating between 3.5 to 4?
+Ans. select Agent_Name, avg(Average_rating) as avg_rating from agent_performance
+     where Average_rating > 0
+     group by Agent_Name
+     having avg_rating between 3.5 and 4;
+
+Q-9. Agent name who have rating less than 3.5?
+Ans. select Agent_Name, avg(Average_rating) as avg_rating from agent_performance
+     where Average_rating > 0
+     group by Agent_Name
+     having avg_rating < 3.5;
+
+Q-10. Agent name who have rating more than 4.5?
+Ans. select Agent_Name, avg(Average_rating) as avg_rating from agent_performance
+     where Average_rating > 0
+     group by Agent_Name
+     having avg_rating > 4.5;
+
+Q-11. How many feedback agents have received more than 4.5 average?
+Ans: select Agent_Name, sum(Total_feedback) from agent_performance
+     where Average_rating > 4.5
+     group by Agent_Name;
+     
+Q-12. Average weekly response time for each agent?
+Ans:
+
+Q-13. Average weekly resolution time for each agents?
+Ans: 
+
+Q-14. Find the number of chat on which they have received a feedback?
+Ans: select Agent_Name, count(Total_chats) from agent_performance where Total_feedback > 0 group by Agent_Name;
+
+Q-15. Total contribution hour for each and every agents weekly basis?
+Ans: 
+
+Q-16 Perform inner join, left join and right join based on the agent column and after joining the table export that data into your local system?
+Ans:
+
+Q-17 Perform partitioning on top of the agent column and then on top of that perform bucketing for each partitioning?
 Ans:
