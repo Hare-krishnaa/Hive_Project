@@ -47,13 +47,11 @@ Ans. select Agent_Name, avg(Average_rating) as avg_rating from agent_performance
 
 Q-9. Agent name who have rating less than 3.5?
 Ans. select Agent_Name, avg(Average_rating) as avg_rating from agent_performance
-     where Average_rating > 0
      group by Agent_Name
      having avg_rating < 3.5;
 
 Q-10. Agent name who have rating more than 4.5?
 Ans. select Agent_Name, avg(Average_rating) as avg_rating from agent_performance
-     where Average_rating > 0
      group by Agent_Name
      having avg_rating > 4.5;
 
