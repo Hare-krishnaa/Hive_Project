@@ -41,7 +41,6 @@ Ans. select Agent_Name, sum(Total_feedback) from agent_performance group by Agen
 
 Q-8. Agent name who have average rating between 3.5 to 4?
 Ans. select Agent_Name, avg(Average_rating) as avg_rating from agent_performance
-     where Average_rating > 0
      group by Agent_Name
      having avg_rating between 3.5 and 4;
 
