@@ -13,8 +13,8 @@ Ans:  create table agent_performance(
             Date_ date,
             Agent_Name string,
             Total_chats int,
-            Average_response_time timestamp,
-            Average_resolution_time timestamp,
+            Average_response_time string,
+            Average_resolution_time string,
             Average_rating float,
             Total_feedback int)
      row format delimited
